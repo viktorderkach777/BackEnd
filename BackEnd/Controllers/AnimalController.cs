@@ -13,11 +13,7 @@ namespace BackEnd.Controllers
     [Route("api/[controller]")]
     public class AnimalController : ControllerBase
     {
-        // GET api/animal/search
-        [HttpGet("search")]
-        public IActionResult Get()
-        {
-            List<AnimalViewModel> model = new List<AnimalViewModel>
+        static List<AnimalViewModel> data = new List<AnimalViewModel>
            {
                new AnimalViewModel {
                    Id=4,
@@ -30,7 +26,27 @@ namespace BackEnd.Controllers
                    Image="https://ichef.bbci.co.uk/news/976/cpsprodpb/7624/production/_104444203_d03fb5eb-685c-42c3-8fa2-eea0ee2dac26.jpg"
                },
            };
-            return Ok(model);
+
+        // GET api/animal/search
+        [HttpGet("search")]
+        public IActionResult Get()
+        {
+           
+            return Ok(data);
+        }
+
+        // POST api/animal/add
+        [HttpPost("add")]
+        public IActionResult Post( [FromBody] AnimalAddViewModel model)
+        {
+            Random rand = new Random();
+            data.Add(new AnimalViewModel
+            {
+                Id = rand.Next(10, 342123),
+                Name = model.Name,
+                Image = model.Image
+            });
+            return Ok();
         }
     }
 
