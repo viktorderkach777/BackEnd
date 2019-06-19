@@ -17,6 +17,9 @@ namespace BackEnd.DAL.Enteties
         {
 
         }
+
+        public DbSet<DbAnimal> Animals { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
