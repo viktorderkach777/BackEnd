@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using BackEnd.DAL.Enteties;
 using BackEnd.ViewModel;
@@ -38,6 +39,7 @@ namespace BackEnd.Controllers
         [HttpGet("search")]
         public IActionResult Get()
         {
+            Thread.Sleep(3000);
             List<AnimalViewModel> model = _context.Animals
                   .Select(a => new AnimalViewModel
                   {
