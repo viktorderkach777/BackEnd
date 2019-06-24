@@ -22,6 +22,7 @@ namespace BackEnd.Controllers
         //           Name="Верблуюд",
         //           Image="http://www.origins.org.ua/pictures/photo_verblud_3.jpg"
         //       },
+
         //       new AnimalViewModel {
         //           Id=7,
         //           Name="Білка",
