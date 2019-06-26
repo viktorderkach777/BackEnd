@@ -80,7 +80,7 @@ namespace BackEnd.Controllers
         [HttpPost("add-base64")]
         public IActionResult AddBase64([FromBody] AnimalAddViewModel model)
         {
-            string imageName = Guid.NewGuid().ToString() + ".jpg";
+            //string imageName = Guid.NewGuid().ToString() + ".jpg";
             string base64 = model.Image;
             if (base64.Contains(","))
             {
@@ -92,12 +92,29 @@ namespace BackEnd.Controllers
             fileDestDir = Path.Combine(fileDestDir, _configuration.GetValue<string>("ImagesPath"));
 
 
-            string fileSave = Path.Combine(fileDestDir, imageName);
+            //string fileSave = Path.Combine(fileDestDir, imageName);
             if (bmp != null)
             {
-                int size = 200;
-                var image = ImageHelper.CompressImage(bmp, size, size);
-                image.Save(fileSave, ImageFormat.Jpeg);
+                int size = 300;
+                string imageName300 = Guid.NewGuid().ToString() + "300.jpg";
+                string fileSave300 = Path.Combine(fileDestDir, imageName300);
+                var image300 = ImageHelper.CompressImage(bmp, size, size);
+                image300.Save(fileSave300, ImageFormat.Jpeg);
+
+                size = 600;
+                string imageName600 = Guid.NewGuid().ToString() + "600.jpg";
+                string fileSave600 = Path.Combine(fileDestDir, imageName600);
+                var image600 = ImageHelper.CompressImage(bmp, size, size);
+                image600.Save(fileSave600, ImageFormat.Jpeg);
+
+
+                size = 1200;
+                string imageName1200 = Guid.NewGuid().ToString() + "1200.jpg";
+                string fileSave1200 = Path.Combine(fileDestDir, imageName1200);
+                var image1200 = ImageHelper.CompressImage(bmp, size, size);
+                image1200.Save(fileSave1200, ImageFormat.Jpeg);
+
+
             }
             //string fileSave = Path.Combine(fileDestDir, imageName);
 
